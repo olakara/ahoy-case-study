@@ -11,6 +11,11 @@ namespace Domain.Entities
     {
         public string Title { get; set; }
         public string IconUrl { get; set; }
-        public IList<Hotel> Hotels { get; set; }
+        public IList<Hotel> Hotels { get; private set; }
+
+        public Facility()
+        {
+            Hotels = new List<Hotel>();
+        }
     }
 }

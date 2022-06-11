@@ -18,10 +18,17 @@ namespace Domain.Entities
 
         public decimal PricePerNight { get; set; }
 
-        public IList<Photo> Photos { get; set; }
+        public IList<Photo> Photos { get; private set; }
 
-        public IList<Review> Reviews { get; set; }
+        public IList<Review> Reviews { get; private set; }
 
-        public IList<Facility> Facities { get; set; }
+        public IList<Facility> Facities { get; private set; }
+
+        public Hotel()
+        {
+            Photos = new List<Photo>();
+            Reviews = new List<Review>();
+            Facities = new List<Facility>();
+        }
     }
 }
