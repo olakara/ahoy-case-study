@@ -39,6 +39,11 @@ namespace Application.Bookings.Commands.CreateBooking
             };
 
             _context.Bookings.Add(entity);
+
+            var hotel = _context.Hotels.Single(x => x.Id == request.HotelId);
+            hotel.RoomCount = hotel.RoomCount - 1;
+            hotel.LastModified = DateTime.UtcNow;
+
             await _context.SaveChangesAsync(cancellationToken);
             return entity.Id;
         }
