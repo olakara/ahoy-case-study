@@ -80,60 +80,57 @@ namespace Infrastructure.Persistence
 
             await _context.SaveChangesAsync();
 
-            if (!_context.Hotels.Any())
-            {
-                _context.Hotels.Add(new Domain.Entities.Hotel
-                {
-                    Address = "1651 Selah Way, Brattleboro, Vermont",
-                    Created = DateTime.Now,
-                    CreatedBy = "System",
-                    Description = "A sample description",                   
-                    Latitude = 42.859531m,
-                    Logitude = -72.607193m,
-                    Name = "Richman Brothers",
-                    PricePerNight = 27,    
-                    Facilities = {
-                        new Domain.Entities.Facility { Title="Sample", IconUrl = "test.jpg" }
-                    }
-                });
-
-                _context.Photos.Add(new Domain.Entities.Photo
-                {
-                    Created = DateTime.Now,
-                    CreatedBy = "System",
-                    HotelId = 1,                   
-                    Title = "Main Photo",
-                    Url = "assets/photos/photo1.jpg"
-                });
-
-                _context.Photos.Add(new Domain.Entities.Photo
-                {
-                    Created = DateTime.Now,
-                    CreatedBy = "System",
-                    HotelId = 1,                   
-                    Title = "Reception Area",
-                    Url = "assets/photos/photo2.jpg"
-                });                
-            }
-
-            await _context.SaveChangesAsync();
+            var spa = _context.Facilities.Single(x => x.Title == "Spa");
 
 
-            if (!_context.Customers.Any())
-            {
-                _context.Customers.Add(new Domain.Entities.Customer
-            {
-                Email = "sample@gmail.com",               
-                Name = "Sample Man"
-            });
-                _context.Reviews.Add(new Domain.Entities.Review
-                {
-                    CustomerId = 1,
-                    HotelId = 1,                    
-                    Rating = 4,
-                    ReviewText = "Excellect service. I really liked staying here!"
-                });
-            }            
+            //_context.Hotels.Add(new Domain.Entities.Hotel
+            //{
+            //    Address = "666 Archwood Avenue, Pinedale",
+            //    Created = DateTime.Now,
+            //    CreatedBy = "System",
+            //    Description = "A sample description",                   
+            //    Latitude = 42.859531m,
+            //    Logitude = -72.607193m,
+            //    Name = "Gene Walters Home",
+            //    PricePerNight = 27,    
+            //    Facilities = {
+            //        new Domain.Entities.Facility { Title="Sample", IconUrl = "test.jpg" },
+            //        spa
+            //    }
+            //});
+
+            //_context.Photos.Add(new Domain.Entities.Photo
+            //{
+            //    Created = DateTime.Now,
+            //    CreatedBy = "System",
+            //    HotelId = 2,                   
+            //    Title = "Main Photo",
+            //    Url = "assets/photos/sample1.jpg"
+            //});
+
+            //_context.Photos.Add(new Domain.Entities.Photo
+            //{
+            //    Created = DateTime.Now,
+            //    CreatedBy = "System",
+            //    HotelId = 2,                   
+            //    Title = "Spa Area",
+            //    Url = "assets/photos/sample.jpg"
+            //});                
+           
+
+            //await _context.SaveChangesAsync();
+
+
+            
+          
+            //_context.Reviews.Add(new Domain.Entities.Review
+            //{
+            //    CustomerId = 1,
+            //    HotelId = 2,                    
+            //    Rating = 5,
+            //    ReviewText = "Best Hotel ever"
+            //});
+            
 
             await _context.SaveChangesAsync();            
         }

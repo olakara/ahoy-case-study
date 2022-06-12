@@ -20,6 +20,7 @@ namespace Domain.Entities
 
         public float Rating { get; set; }
         public int ReviewCount { get; set; }
+        public int RoomCount { get; set; }
 
         public IList<Photo> Photos { get; private set; }
 

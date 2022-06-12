@@ -1,4 +1,7 @@
-﻿namespace WebAPI
+﻿using FluentValidation.AspNetCore;
+using WebAPI.Filters;
+
+namespace WebAPI
 {
     public static class ConfigureServices
     {
@@ -6,7 +9,9 @@
         {
             services.AddHttpContextAccessor();
 
-            services.AddControllers();
+            services.AddControllers( options => 
+                                    options.Filters.Add<ApiExceptionFilterAttribute>())
+                                    .AddFluentValidation(x => x.AutomaticValidationEnabled = true);
 
             return services;
         }
