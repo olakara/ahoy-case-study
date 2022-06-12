@@ -1,14 +1,14 @@
-﻿using Domain.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Application.Hotels.Queries.GetHotel
 {
-    public class Hotel : BaseAuditableEntity
+    public class HotelViewModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
@@ -17,21 +17,17 @@ namespace Domain.Entities
         public decimal Latitude { get; set; }
 
         public decimal PricePerNight { get; set; }
-
         public float Rating { get; set; }
         public int ReviewCount { get; set; }
 
-        public IList<Photo> Photos { get; private set; }
+        public List<PhotoViewModel> Photos { get; set; }
+        public List<FacilitiesViewModel> Facilities { get; set; }
 
-        public IList<Review> Reviews { get; private set; }
-
-        public IList<Facility> Facilities { get; private set; }
-
-        public Hotel()
+        public HotelViewModel()
         {
-            Photos = new List<Photo>();
-            Reviews = new List<Review>();
-            Facilities = new List<Facility>();
+            Photos = new List<PhotoViewModel>();
+            Facilities = new List<FacilitiesViewModel>();
         }
+
     }
 }
