@@ -25,10 +25,10 @@ namespace Application.Hotels.Queries.GetHotel
 
         public async Task<HotelViewModel?> Handle(GetHotelQuery request, CancellationToken cancellationToken)
         {
-            var result = _context.Hotels.Include(x=> x.Photos)
+            var result = await _context.Hotels.Include(x=> x.Photos)
                                         .Include(x=> x.Reviews)
                                         .Include(x=> x.Facilities)
-                                        .AsNoTracking().SingleOrDefault(x => x.Id == request.Id);
+                                        .AsNoTracking().SingleOrDefaultAsync(x => x.Id == request.Id);
             if (result != null)
             {
                 return new HotelViewModel
