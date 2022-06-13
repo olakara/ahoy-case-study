@@ -28,10 +28,17 @@ namespace Application.Hotels.Queries.GetHotelsWithPagination
 
         public async Task<PaginatedList<HotelListingViewModel>> Handle(GetHotelsWithPaginationQuery request, CancellationToken cancellationToken)
         {
-            var result = await _context.Hotels.Include(x => x.Photos)
+            var query = _context.Hotels.Include(x => x.Photos)
                                         .AsNoTracking().Where(x => x.Name.Contains(request.SearchTerm) ||
-                                                            x.Description.Contains(request.SearchTerm)).ToListAsync();
-            return null;
+                                                            x.Description.Contains(request.SearchTerm));
+
+            var paginatedResult = await PaginatedList<Hotel>.CreateAsync(query,query.Page, query.PageSize);                                           
+
+            return new PaginatedResult<HotelListingViewModel>(paginatedResult.Items.Select(x=> x.AsListingViewModel()).ToList(),
+                                                                paginatedResult.PageIndex,
+                                                                paginatedResult.TotalPages,
+                                                                paginatedResult.TotalCount);
+            
         }
     }
 }

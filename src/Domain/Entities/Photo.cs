@@ -11,6 +11,7 @@ namespace Domain.Entities
     {
         public string Url { get; set; }
         public string Title { get; set; }
+        public bool isMain { get; set; }
 
         public int HotelId { get; set; }
         public Hotel Hotel { get; set; }

@@ -31,28 +31,7 @@ namespace Application.Hotels.Queries.GetHotel
                                         .AsNoTracking().SingleOrDefaultAsync(x => x.Id == request.Id);
             if (result != null)
             {
-                return new HotelViewModel
-                {
-                    Address = result.Address,
-                    Description = result.Description,
-                    Facilities = result.Facilities.Any() ? result.Facilities.Select(x => new FacilitiesViewModel
-                    {
-                        IconUrl = x.IconUrl,
-                        Title = x.Title
-                    }).ToList() : new List<FacilitiesViewModel>(),
-                    Id = result.Id,
-                    Latitude = result.Latitude,
-                    Logitude = result.Logitude,
-                    Name = result.Name,
-                    Photos = result.Photos.Any() ? result.Photos.Select(x => new PhotoViewModel
-                    {
-                        Url = x.Url,
-                        Title = x.Title
-                    }).ToList() : new List<PhotoViewModel>(),
-                    PricePerNight = result.PricePerNight,
-                    Rating = result.Rating,
-                    ReviewCount = result.ReviewCount
-                };
+                return result.AsViewModel();
             }
             else 
             {
