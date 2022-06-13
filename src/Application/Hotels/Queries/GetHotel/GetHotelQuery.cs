@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces;
+using Application.Hotels.Extensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;

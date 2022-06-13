@@ -1,6 +1,6 @@
 namespace Application.Common.Models
 {
-    public class PaginatedResult
+    public class PaginatedResult<T>
     {
         public IEnumerable<T> Items { get; }
         public int PageIndex {get;}

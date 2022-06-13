@@ -1,3 +1,7 @@
+using Application.Hotels.Queries.GetHotel;
+using Application.Hotels.Queries.GetHotelsWithPagination;
+using Domain.Entities;
+
 namespace Application.Hotels.Extensions
 {
     public static class Extensions

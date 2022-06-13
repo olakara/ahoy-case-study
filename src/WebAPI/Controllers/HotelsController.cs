@@ -8,7 +8,8 @@ namespace WebAPI.Controllers
     public class HotelsController : ApiControllerBase
     {
         [HttpPost]
-        public async Task<ActionResult<PaginatedList<HotelListingViewModel>>> Search(GetHotelsWithPaginationQuery query)
+        [Route("Search")]
+        public async Task<ActionResult<PaginatedResult<HotelListingViewModel>>> Search(GetHotelsWithPaginationQuery query)
         {
             return await Mediator.Send(query);
         }
