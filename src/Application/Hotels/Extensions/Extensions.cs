@@ -16,7 +16,7 @@ namespace Application.Hotels.Extensions
                 Rating = hotel.Rating,
                 ReviewCount = hotel.Reviews.Count,
                 PricePerNight = hotel.PricePerNight,
-                PhotoUrl = hotel.Photos.FirstOrDefault(x => x.IsMain)?.Url
+                PhotoUrl =  hotel.Photos.FirstOrDefault(x => x.IsMain)?.Url
             };
         }
 

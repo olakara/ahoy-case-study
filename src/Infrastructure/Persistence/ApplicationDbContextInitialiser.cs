@@ -83,65 +83,73 @@ namespace Infrastructure.Persistence
             var spa = _context.Facilities.Single(x => x.Title == "Spa");
             var parking = _context.Facilities.Single(x => x.Title == "Wifi");
 
-
-            _context.Hotels.Add(new Domain.Entities.Hotel
+            if (!_context.Hotels.Any())
             {
-                Address = "666 Archwood Avenue, Pinedale",
-                Created = DateTime.Now,
-                CreatedBy = "System",
-                Description = "A sample description",
-                Latitude = 42.859531m,
-                Logitude = -72.607193m,
-                Name = "Gene Walters Home",
-                PricePerNight = 27,
-                Facilities = {
-                    new Domain.Entities.Facility { Title="Sample", IconUrl = "test.jpg" },
-                    spa
-                }
-            });
+                _context.Hotels.Add(new Domain.Entities.Hotel
+                {
+                    Address = "666 Archwood Avenue, Pinedale",
+                    Created = DateTime.Now,
+                    CreatedBy = "System",
+                    Description = "A sample description",
+                    Latitude = 42.859531m,
+                    Logitude = -72.607193m,
+                    Name = "Gene Walters Home",
+                    PricePerNight = 27,
+                    Facilities = {
+                        new Domain.Entities.Facility { Title="Sample", IconUrl = "test.jpg" },
+                        spa
+                    }
+                });
 
-            _context.Hotels.Add(new Domain.Entities.Hotel
-            {
-                Address = "2514 Lang Avenue",
-                Created = DateTime.Now,
-                CreatedBy = "System",
-                Description = "A sample description",
-                Latitude = 40.7127281m,
-                Logitude = -74.0060152m,
-                Name = "Huffman and Boyle",
-                PricePerNight = 27,
-                Facilities = {
-                    parking,
-                    spa
-                }
-            });
+                _context.Hotels.Add(new Domain.Entities.Hotel
+                {
+                    Address = "2514 Lang Avenue",
+                    Created = DateTime.Now,
+                    CreatedBy = "System",
+                    Description = "A sample description",
+                    Latitude = 40.7127281m,
+                    Logitude = -74.0060152m,
+                    Name = "Huffman and Boyle",
+                    PricePerNight = 27,
+                    Facilities = {
+                        parking,
+                        spa
+                    }
+                });
 
-            _context.Photos.Add(new Domain.Entities.Photo
-            {
-                Created = DateTime.Now,
-                CreatedBy = "System",
-                HotelId = 1,
-                Title = "Main Photo",
-                Url = "assets/photos/photo1.jpg"
-            });
+                _context.Photos.Add(new Domain.Entities.Photo
+                {
+                    Created = DateTime.Now,
+                    CreatedBy = "System",
+                    HotelId = 1,
+                    Title = "Main Photo",
+                    Url = "assets/photos/photo1.jpg"
+                });
 
-            _context.Photos.Add(new Domain.Entities.Photo
-            {
-                Created = DateTime.Now,
-                CreatedBy = "System",
-                HotelId = 1,
-                Title = "Spa Area",
-                Url = "assets/photos/sample.jpg"
-            });
+                _context.Photos.Add(new Domain.Entities.Photo
+                {
+                    Created = DateTime.Now,
+                    CreatedBy = "System",
+                    HotelId = 1,
+                    Title = "Spa Area",
+                    Url = "assets/photos/sample.jpg"
+                });
 
-            _context.Photos.Add(new Domain.Entities.Photo
-            {
-                Created = DateTime.Now,
-                CreatedBy = "System",
-                HotelId = 2,
-                Title = "Main Photo",
-                Url = "assets/photos/sample1.jpg"
-            });
+                _context.Photos.Add(new Domain.Entities.Photo
+                {
+                    Created = DateTime.Now,
+                    CreatedBy = "System",
+                    HotelId = 2,
+                    Title = "Main Photo",
+                    Url = "assets/photos/sample1.jpg"
+                });
+
+                _context.Customers.Add(new Domain.Entities.Customer
+                {
+                    Email = "sample@gmail.com",
+                    Name = "Sample Simple"                    
+                });
+            }            
 
             await _context.SaveChangesAsync();
 
