@@ -36,7 +36,8 @@ namespace Application.Hotels.Extensions
                 Photos = hotel.Photos.Select(x => new PhotoViewModel
                     {
                         Url = x.Url,
-                        Title = x.Title
+                        Title = x.Title,
+                        IsMain = x.IsMain,
                     }).ToList(),
                 Facilities = hotel.Facilities.Select(x => new FacilitiesViewModel
                     {
